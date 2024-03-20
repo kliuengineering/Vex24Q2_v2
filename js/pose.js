@@ -258,6 +258,7 @@ camera.start();
 
 
 
+
 /************************************** CONTROL PANEL LOGIC BEGINS *************************/
 
 // allows user control of pose detection parameters
