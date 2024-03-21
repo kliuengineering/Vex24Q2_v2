@@ -1,0 +1,18 @@
+{
+  "name": "ret",
+  "version": "1.0.0",
+  "description": "",
+  "main": "socket.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dgram-as-promised": "^5.0.1",
+    "websocket": "^1.0.34",
+    "ws": "^8.16.0"
+  }
+}
