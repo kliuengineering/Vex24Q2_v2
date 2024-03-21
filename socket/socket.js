@@ -28,11 +28,7 @@ class SocketClient {
                 console.log('Data sent to server');
                 this.packetsSent++;    
             }
-            if (this.packetsSent === 5) {
-                console.log('Sleeping for 5 seconds');
-                await sleep(5000); // Sleep for 5 seconds
-                this.packetsSent = 0;
-            }
+            
         } catch (error) {
             console.error('Error sending data to server', error);
         }
