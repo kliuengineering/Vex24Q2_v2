@@ -1,5 +1,6 @@
 import express from "express";
 import {SocketClient, sleep} from './socket.js'
+import bodyParser from "body-parser";
 
 const app = express();
 const port = 3000;
@@ -11,16 +12,26 @@ const socket = new SocketClient(MC_IP_ADDR, MC_PORT); //D: pass ip address and p
 
 app.post('/streamData', async (req, res) => {
     try {
-        const data = req.body.data; // Get data from the html body
+        const data = req.body; // Get data from the html body
+        console.log('Data received:', data);
 
-        // send to the udp socket
-        await socket.sendData(data);
-        if (socket.packetsSent === 5) {
-            console.log('Sleeping for 5 seconds');
-            await sleep(5000); // Sleep for 5 seconds
-            socket.packetsSent = 0;
+        //D: data is a key-value pair, so pass the value to the sendData function. 
+        // I tested this with a key pair value of "value" and it worked.
+        
+        if(data !== undefined){
+            // send to the udp socket
+            await socket.sendData(data.value);
+            if (socket.packetsSent === 5) {
+                console.log('Sleeping for 5 seconds');
+                await sleep(5000); // Sleep for 5 seconds
+                socket.packetsSent = 0;
+            }
+            res.status(200).send('Data sent to MC');
         }
-        res.status(200).send('Data sent to MC');
+        else{
+            res.status(400).send('Data not found in request');
+        }
+        
 
     } catch (error) {
         console.error('Error processing request:', error);
