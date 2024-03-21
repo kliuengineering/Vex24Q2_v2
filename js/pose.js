@@ -171,19 +171,6 @@ function onResultsPose(results)
     }    
   }
 
-  // TODO:
-
-  // Prerequisites
-  //    a) revise calcualteAngle() function for retrieving the left and right arms' angles
-
-  // Establishes a server-client connection
-  //    1. sets up a socket for transmitting INET, UDP to the agent
-  //    2. implements a switch - case for sending instructions to the agent
-  //    3. Ensures the frequency of sending packets do not exceed 2 packets/second
-
-
-
-
 
   // draws land marks, indicates different body parts
   drawLandmarks
